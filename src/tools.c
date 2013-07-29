@@ -54,6 +54,10 @@ Place, Suite 330, Boston, MA 02111-1307, USA.
 #  include <malloc.h>
 #  include <direct.h>
 #  include <io.h>
+/*WIN32*/
+#elif DT_OS == 'w'
+#  define SEPARATOR "\\"
+#  include <io.h>
 /*UNIX*/
 #else
 #  define SEPARATOR "/"
@@ -309,6 +313,8 @@ void MakeDir(char file[128], const char *path, const char *dir, const char
 #  else
    _mkdir(file);
 #  endif
+#elif DT_OS == 'w'
+   mkdir(file);
 #else
    mkdir(file,(mode_t)S_IRWXU); /*read write exec owner*/
 #endif

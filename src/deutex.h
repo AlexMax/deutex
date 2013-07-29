@@ -76,6 +76,8 @@ extern const char deutex_version[];
 #elif defined __OS2__	/* IBM C Set++ and Borland C define __OS2__ ? */\
   || defined OS2	/* Microsoft C defines OS2 (I think) */
 #  define DT_OS 'o'
+#elif defined _WIN32 /* [AM] Windows compilers define _WIN32 */
+#  define DT_OS 'w'
 #else			/* None of the above. Assume Unix. */
 #  define DT_OS 'u'
 #endif
@@ -286,7 +288,7 @@ void XTRtextureUsed(const char *wadin);
  */
 struct cusage_s;
 typedef struct cusage_s cusage_t;
- 
+
 
 /*
  *	Misc globals, set by command line arguments
